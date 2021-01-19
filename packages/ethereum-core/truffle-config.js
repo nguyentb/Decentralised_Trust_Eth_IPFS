@@ -52,14 +52,39 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
     },
 
+    ropsten: {
+      provider: () => new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a"),
+      network_id: 3,       // Ropsten's id
+      gas: 5500000,        // Ropsten has a lower block limit than mainnet
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+    },
+
     rinkeby: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/7d27db2b32784e2fa64b61edb3124735");
+        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a");
       },
       network_id: 4,
       gas: 4500000,
       gasPrice: 10000000000,
-    }
+    },
+
+    kovan: {
+      provider: function() {
+        return new HDWalletProvider(mnemonic, "https://kovan.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a");
+      },
+      network_id: 42
+    },
+
+    goerli: {
+      provider: () => {
+        return new HDWalletProvider(process.env.MNEMONIC, "https://goerli.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a")
+      },
+      network_id: '5', // eslint-disable-line camelcase
+      gas: 4465030,
+      gasPrice: 10000000000,
+    },
 
     // Another network with more advanced options...
     // advanced: {

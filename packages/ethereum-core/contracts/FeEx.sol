@@ -1,23 +1,19 @@
 pragma solidity >=0.4.22 <0.9.0;
 
-contract DataManagement {
+contract FeEx {
 
-    struct ACList {
-		string jwt;
-		string dataHash;
-		bool flag;
+	struct FeExStrut {
+    	string transID;
+    	uint expValue;
+		uint prev_expValue;
+    	uint fbScore;
+    	bool perFlag;
 	}
 
-    // list of uploaded data specified by hash of the data
-    mapping(address => string) public uploaded_data_list;
-    // access control list
-    mapping(address => mapping(address => ACList)) public ac_list;
+	// public ledger storing related information about Experience and Feedback permission
+	mapping (address => mapping (address => FeExStrut)) public FeExInfo;
 
-    //Access equest mapping shows a list of requesters with associated requested permissions corresponding to a data owner	
-	mapping(address => address[]) public request_list;
-    mapping(address => uint) public request_list_index;
-    mapping(address => mapping(address => uint8)) public request_list_permission;
-
+    
     // Upload Data event
     event uploadDataEvent (
 		address _address,
