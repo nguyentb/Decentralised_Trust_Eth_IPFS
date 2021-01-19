@@ -1,5 +1,5 @@
 {
-  "name": "tfeltin.github.io",
+  "name": "decentralised-trust-system",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tfeltin/tfeltin.github.io.git"
+    "url": "https://github.com/nguyentb/Decentralised_Trust_Eth_IPFS.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tfeltin/tfeltin.github.io/issues"
-  },
-  "homepage": "https://github.com/tfeltin/tfeltin.github.io#readme",
+
+  "contributors": [
+    {
+      "name": "Nguyen Truong",
+      "email": "n.truong@imperial.ac.uk",
+      "url": "https://github.com/nguyentb"
+    }
+  ],
+
+  "author": "Nguyen Truong and Data Science Institute team, Imperial College London",
+  "license": "MIT",
+
+  "homepage": "https://github.com/nguyentb/Decentralised_Trust_Eth_IPFS",
+  
   "dependencies": {
     "crypto-js": "^3.1.9-1",
     "openpgp": "^4.5.5",
