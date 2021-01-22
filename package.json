@@ -16,6 +16,12 @@
       "name": "Nguyen Truong",
       "email": "n.truong@imperial.ac.uk",
       "url": "https://github.com/nguyentb"
+    },
+
+    {
+      "name": "Thomas Feltin",
+      "email": "Thomas.Feltin@polytechnique.edu",
+      "url": "https://github.com/tfeltin"
     }
   ],
 
@@ -23,7 +29,7 @@
   "license": "MIT",
 
   "homepage": "https://github.com/nguyentb/Decentralised_Trust_Eth_IPFS",
-  
+
   "dependencies": {
     "crypto-js": "^3.1.9-1",
     "openpgp": "^4.5.5",

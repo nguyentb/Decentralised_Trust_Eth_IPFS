@@ -1,75 +1,75 @@
-pragma solidity >=0.4.22 <0.9.0;
+pragma solidity >= 0.4.22 < 0.9.0;
 
 contract FeEx {
+	// For convenience of the demo, some default values are set as follows:
+	// _fbscore is set as uint between 1 and 1024
+	// default expValue is 32768 (2^15)
+	// maximum exp value is 1048576 (2^20)
+	// alpha = 2^12 = 4096
 
 	struct FeExStrut {
-    	string transID;
     	uint expValue;
 		uint prev_expValue;
-    	uint fbScore;
-    	bool perFlag;
+		uint perCount; // counter indicating the number of times a trustor can give feedback toward a trustee
 	}
 
 	// public ledger storing related information about Experience and Feedback permission
 	mapping (address => mapping (address => FeExStrut)) public FeExInfo;
-
     
-    // Upload Data event
-    event uploadDataEvent (
-		address _address,
-		string _dataHash
+    // enable feedback for trustor toward the trustee event
+    event enFeedbackEvent (
+		address _trustor,
+		address _trustee
     );
 
-    //Grant Permission Event
-    event grantAccessEvent (
-		string jwt
-	);
+	event expCalculationEvent (
+		address _trustor,
+		address _trustee,
+		uint expValue
+    );
 
-    //Request Permission Event
-    event requestAccessEvent (
-		address _owner,
-        uint _permission
-	);
+	// function to enable feedback for trustor toward the trustee
+	function enFeedback (address _trustor, address _trustee ) public {
+		require(msg.sender == _trustor);
 
-  	function uploadData (address _owner, string memory _dataHash) public {
-		require(msg.sender == _owner);
-
-        // update uploaded_data_list
-        uploaded_data_list[_owner] = _dataHash;
-
-		//trigger uploadData event
-		emit uploadDataEvent(_owner, _dataHash);
+		if (FeExInfo[_trustor][_trustee].expValue > 0) { //the Exp between two entities has already initialized.
+			FeExInfo[_trustor][_trustee].perCount++;
+		} else { //first transaction betweeh the two, initialize the FeExInfo
+			// default expValue, pre_expValue are 1024
+			FeExInfo[_trustor][_trustee] = FeExStrut(32768, 32768, 1);
+		}
+		emit enFeedbackEvent(_trustor, _trustee);
   	}
 
-	function grantAccess (address _owner, address _consumer, string memory _jwt) public {
-		require(msg.sender == _owner);
-		require(bytes(uploaded_data_list[_owner]).length > 0); //owner have already uploaded data
+	// submit feedback and calculate the Experience relationship accordingly
+	function expCalculation (address _trustor, address _trustee, uint8 _fbscore ) public {	
+		require(msg.sender == _trustor);
+		require(FeExInfo[_trustor][_trustee].perCount > 0); //trustor is allowed to give feedback toward trustee
+		// for convenience, _fbscore is set as uint between 1 and 16
 
-		// update ac_list
-		ac_list[_owner][_consumer] = ACList(_jwt, uploaded_data_list[_owner], true);
-		
-        //create or update permission		
-		emit grantAccessEvent(_jwt);
-	}
+		uint updatedExpValue;
 
-	function requestAccess(address _requester, address _owner, uint8 _permission) public {
-		require(msg.sender == _requester);
-		require(bytes(uploaded_data_list[_owner]).length > 0); //owner have already uploaded data
-
-		if (request_list_permission[_owner][_requester] > 0) { //requester has been already requested
-			//do nothing
-		} else { // new request
-			if (request_list_index[_owner] > 0) {
-				request_list[_owner].push(_requester);		
-				request_list_index[_owner] ++ ;
-			} else {
-				request_list[_owner].push(_requester);
-				request_list_index[_owner] = 1; //first request for the data owner
-			}
+		if (_fbscore >= 700) { // cooperative feedback
+			// increase model
+			updatedExpValue = FeExInfo[_trustor][_trustee].expValue + ((_fbscore*4096)/1024)/(1048576 - FeExInfo[_trustor][_trustee].expValue);
+			FeExInfo[_trustor][_trustee].prev_expValue = FeExInfo[_trustor][_trustee].expValue;
+			FeExInfo[_trustor][_trustee].expValue = updatedExpValue;
 		}
-		//update the request list permission
-		request_list_permission[_owner][_requester] = _permission;
+		if (_fbscore <= 512) { //un-cooperative feedback
+			// decrease model
+			updatedExpValue = FeExInfo[_trustor][_trustee].expValue - (((1024-_fbscore)*4096)/1024)/(1048576 - FeExInfo[_trustor][_trustee].expValue);
+			FeExInfo[_trustor][_trustee].prev_expValue = FeExInfo[_trustor][_trustee].expValue;
+			FeExInfo[_trustor][_trustee].expValue = updatedExpValue;
+		}
+		if ((_fbscore > 512) && (_fbscore < 700)) { //decay
+			// decay model
+			updatedExpValue = FeExInfo[_trustor][_trustee].expValue - (1024 - 1024*FeExInfo[_trustor][_trustee].prev_expValue/1048576);
+			FeExInfo[_trustor][_trustee].prev_expValue = FeExInfo[_trustor][_trustee].expValue;
+			FeExInfo[_trustor][_trustee].expValue = updatedExpValue;
+		}
 
-        emit requestAccessEvent(_owner, _permission);
-	}
+		//trigger uploadData event
+		emit expCalculationEvent(_trustor, _trustee, updatedExpValue);
+  	}
+
 }
