@@ -26,8 +26,8 @@ contract Reputation is usingProvable {
         emit LogResult(_result);
 
         // update RepPosInfo & RepNegInfo
-        RepPosInfo[addr] = getRepPos(_result, addr);
-        RepPosInfo[addr] = getRepNeg(_result, addr);
+        //RepPosInfo[addr] = getRepPos(_result, addr);
+        //RepPosInfo[addr] = getRepNeg(_result, addr);
     }
 
     // request result of Reputation from outside world (by calling APIs) using Oracalize    
