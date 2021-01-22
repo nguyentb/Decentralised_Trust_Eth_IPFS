@@ -17,7 +17,8 @@ To try out the system you need an Ethereum address on the Rinkeby TestNet throug
 All deployment information including the addresses of the SCs can be found at `./packages/ethereum-core/build/contracts/*.json`.
 For instance, the FeEx SC deployment address in Kovan test-net can be found in the file `./packages/ethereum-core/build/contracts/FeEx.json` as follows:
 
-`"networks": {
+```
+"networks": {
     "5": {
       "events": {
         "0x6c485cd32aab61ae40cb1ca90173795a264f05f55acb63425455ccd1b3803771": {
@@ -63,7 +64,8 @@ For instance, the FeEx SC deployment address in Kovan test-net can be found in t
       "links": {},
       "address": "0xcBEF28e258a5C56a67b40e64d00eED8d2eCfe22D",
       "transactionHash": "0x00f327ecbf74a2c902969e0181a93633e8237f8952a5fde24890b6a4a3c7857e"
-    },`
+    },
+```
 
 
 #### Connect your browser to your IPFS node
