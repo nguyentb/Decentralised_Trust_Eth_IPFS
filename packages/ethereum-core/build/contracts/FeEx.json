@@ -8549,6 +8549,52 @@
     "version": "0.5.1+commit.c8a2cb62.Emscripten.clang"
   },
   "networks": {
+    "4": {
+      "events": {
+        "0x6c485cd32aab61ae40cb1ca90173795a264f05f55acb63425455ccd1b3803771": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "_trustor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_trustee",
+              "type": "address"
+            }
+          ],
+          "name": "enFeedbackEvent",
+          "type": "event"
+        },
+        "0x207170214763f6c2c61bbfd0383b1c2488bd0c3e4f4dcaa70ce58aa3f9ecde16": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "_trustor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_trustee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "expValue",
+              "type": "uint256"
+            }
+          ],
+          "name": "expCalculationEvent",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x49a5819ec4F713D0eD37B659ce4F082cDcb36e5E",
+      "transactionHash": "0x4f324eb0059d613a03d0972e5a2c197cacba7b6b7b460e7d8eb88f6828f77cbd"
+    },
     "5": {
       "events": {
         "0x6c485cd32aab61ae40cb1ca90173795a264f05f55acb63425455ccd1b3803771": {
@@ -8643,7 +8689,7 @@
     }
   },
   "schemaVersion": "3.3.3",
-  "updatedAt": "2021-01-22T18:47:49.491Z",
+  "updatedAt": "2021-01-22T19:32:37.722Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

@@ -4501,6 +4501,37 @@
     "version": "0.5.1+commit.c8a2cb62.Emscripten.clang"
   },
   "networks": {
+    "4": {
+      "events": {
+        "0xc4dc360d0a9c0677a3379ae0a3d81e887f761e65fdf3d7e00859d1bcd3c47389": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "description",
+              "type": "string"
+            }
+          ],
+          "name": "LogNewProvableQuery",
+          "type": "event"
+        },
+        "0xa25f2099919c7f026f9326edd9b612739f6ef899978c6aa38ba12db0b7830cf7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "result",
+              "type": "string"
+            }
+          ],
+          "name": "LogResult",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xEf3B2Cf45f9D3443eb04E8E8ab3B2B0Ec0cfAfCd",
+      "transactionHash": "0xe4e546b446f3fc83c92584a597331e044b4737563c350ba1f5d0563c3829a281"
+    },
     "5": {
       "events": {
         "0xc4dc360d0a9c0677a3379ae0a3d81e887f761e65fdf3d7e00859d1bcd3c47389": {
@@ -4565,7 +4596,7 @@
     }
   },
   "schemaVersion": "3.3.3",
-  "updatedAt": "2021-01-22T18:47:49.496Z",
+  "updatedAt": "2021-01-22T19:32:37.726Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {
