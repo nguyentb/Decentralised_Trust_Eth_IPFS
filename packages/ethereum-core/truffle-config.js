@@ -79,7 +79,7 @@ module.exports = {
 
     goerli: {
       provider: () => {
-        return new HDWalletProvider(process.env.MNEMONIC, "https://goerli.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a")
+        return new HDWalletProvider(mnemonic, "https://goerli.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a")
       },
       network_id: '5', // eslint-disable-line camelcase
       gas: 4465030,

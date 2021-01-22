@@ -29,7 +29,7 @@ contract FeEx {
     );
 
 	// function to enable feedback for trustor toward the trustee
-	function enFeedback (address _trustor, address _trustee ) public {
+	function enFeedback (address _trustor, address _trustee ) internal { //can only be called in this SC or in derived SCs
 		require(msg.sender == _trustor);
 
 		if (FeExInfo[_trustor][_trustee].expValue > 0) { //the Exp between two entities has already initialized.
@@ -67,6 +67,9 @@ contract FeEx {
 			FeExInfo[_trustor][_trustee].prev_expValue = FeExInfo[_trustor][_trustee].expValue;
 			FeExInfo[_trustor][_trustee].expValue = updatedExpValue;
 		}
+
+		//decrease the perCount by 1
+		FeExInfo[_trustor][_trustee].perCount--;
 
 		//trigger uploadData event
 		emit expCalculationEvent(_trustor, _trustee, updatedExpValue);

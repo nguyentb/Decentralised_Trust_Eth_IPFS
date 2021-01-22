@@ -4500,9 +4500,73 @@
     "name": "solc",
     "version": "0.5.1+commit.c8a2cb62.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5": {
+      "events": {
+        "0xc4dc360d0a9c0677a3379ae0a3d81e887f761e65fdf3d7e00859d1bcd3c47389": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "description",
+              "type": "string"
+            }
+          ],
+          "name": "LogNewProvableQuery",
+          "type": "event"
+        },
+        "0xa25f2099919c7f026f9326edd9b612739f6ef899978c6aa38ba12db0b7830cf7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "result",
+              "type": "string"
+            }
+          ],
+          "name": "LogResult",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x004e1d93032917ac87235db74Bbe4B422Fe726B2",
+      "transactionHash": "0xe175e847693e0065f2d5d3cc1cb95184ebe2501f8a2ea0607b098d3dbc799ae1"
+    },
+    "42": {
+      "events": {
+        "0xc4dc360d0a9c0677a3379ae0a3d81e887f761e65fdf3d7e00859d1bcd3c47389": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "description",
+              "type": "string"
+            }
+          ],
+          "name": "LogNewProvableQuery",
+          "type": "event"
+        },
+        "0xa25f2099919c7f026f9326edd9b612739f6ef899978c6aa38ba12db0b7830cf7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "result",
+              "type": "string"
+            }
+          ],
+          "name": "LogResult",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x004e1d93032917ac87235db74Bbe4B422Fe726B2",
+      "transactionHash": "0x8ad3505b4ffadcc8282cb58005d65dc155d31cc0e3b28017e45d8cdc749c49d7"
+    }
+  },
   "schemaVersion": "3.3.3",
-  "updatedAt": "2021-01-22T14:26:09.268Z",
+  "updatedAt": "2021-01-22T18:47:49.496Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "__callback(bytes32,string)": {
