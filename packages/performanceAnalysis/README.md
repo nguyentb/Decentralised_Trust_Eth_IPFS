@@ -1,6 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Performance Analysis
 
-## Available Scripts
+### Available Scripts
+The performance analysis script is located at `./PerformanceAnalysis/src/latencyMeasurement.mjs`
+
+In the project directory, you can run:
+
+### `node --experimental-json-modules latencyMeasurement.mjs`
+The result will be recorded at `./PerformanceAnalysis/src/{test-net}readingLatency_result.txt` and `./PerformanceAnalysis/src/{test-net}writingLatency_result.txt`
+where `{test-bet}` is `Ropsten, Rinkeby, Kovan, or Goerli`.
+
+### `latencyMeasurement.mjs` configuration
+For convenience, network proviver and account information are hard-coded in the script. You can change such information accordingly.
+
+----
+## Web-UI for the demonstration and the performance Analysis using Metamask
+
+UI App was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Available Scripts
 
 In the project directory, you can run:
 
