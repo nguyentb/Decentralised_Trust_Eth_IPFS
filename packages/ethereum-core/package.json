@@ -17,8 +17,10 @@
     "dev": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "author": "Nguyen Truong and Data Science Institute team, Imperial College London",
   "license": "MIT",
+  
   "devDependencies": {
     "lite-server": "^2.3.0",
     "truffle": "5.0.0-beta.0"
