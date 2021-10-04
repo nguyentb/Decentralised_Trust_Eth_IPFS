@@ -22,7 +22,7 @@ contract FeEx {
 		address _trustee
     );
 
-	event expCalculationEvent (
+    event expCalculationEvent (
 		address _trustor,
 		address _trustee,
 		uint expValue
