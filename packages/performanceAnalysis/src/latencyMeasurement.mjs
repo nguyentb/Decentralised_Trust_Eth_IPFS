@@ -5,9 +5,9 @@ import fs from 'fs';
 import HDWalletProvider from "@truffle/hdwallet-provider";
 const mnemonic = "atom green circle false illness morning humor comic ethics token dice legend";
 
-//const ropsten_provider = new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a");
-//const rinkeby_provider = new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a");
-//const kovan_provider = new HDWalletProvider(mnemonic, "https://kovan.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a");
+const ropsten_provider = new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a");
+const rinkeby_provider = new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a");
+const kovan_provider = new HDWalletProvider(mnemonic, "https://kovan.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a");
 const goerli_provider = new HDWalletProvider(mnemonic, "https://goerli.infura.io/v3/4d7d8f04493b458ab022a68b571ccb7a");
 
 const web3 = new Web3(goerli_provider);
@@ -18,9 +18,9 @@ const trustee = '0xfcBa3eeC255501542c764d42847ba517Ed1814F3'.toLowerCase();
 const trustee_2 = '0x6D5Ac591Ec603391B615035f333B7Fe85d2d5d94'.toLowerCase();
 
 const abi = FeExSc.abi;
-//const contract_Address = FeExSc.networks[3].address; //ropsten smart contract address
-//const contract_Address = FeExSc.networks[4].address; //rinkeby smart contract address
-//const contract_Address = FeExSc.networks[42].address; //kovan smart contract address
+const contract_Address = FeExSc.networks[3].address; //ropsten smart contract address
+const contract_Address = FeExSc.networks[4].address; //rinkeby smart contract address
+const contract_Address = FeExSc.networks[42].address; //kovan smart contract address
 const contract_Address = FeExSc.networks[5].address; //Goerli smart contract address
 
 const contract = new web3.eth.Contract(abi, contract_Address); 
