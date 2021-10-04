@@ -22,3 +22,23 @@ contract Migrations {
         upgraded.setCompleted(last_completed_migration);
     }
 }
+
+contract DDS {
+  function ePayment(address _storageNode,
+    unit _amount, string _datahash) {
+    ...
+    if (success) {
+      //call FeEx using deployed address scAddr
+      FeEx fe = FeEx(scAddr);
+      fe.enFeedback(msg.sender, _storageNode,
+      string _transID);
+    }
+  }
+}
+contract FeEx {
+  function enFeedback(address _owner,
+    address _storageNode, string _transID);
+  function expCal(address _owner, uint _fbScore,
+    address _storageNode, string _transID);
+}
+
