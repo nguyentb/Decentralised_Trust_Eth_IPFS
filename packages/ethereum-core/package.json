@@ -6,19 +6,12 @@
   "directories": {
     "test": "test"
   },
-  "contributors": [
-    {
-      "name": "Nguyen Truong",
-      "email": "n.truong@imperial.ac.uk",
-      "url": "https://github.com/nguyentb"
-    }
-  ],
+  
   "scripts": {
     "dev": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 
-  "author": "Nguyen Truong and Data Science Institute team, Imperial College London",
   "license": "MIT",
   
   "devDependencies": {
